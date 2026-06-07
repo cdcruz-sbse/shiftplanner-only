@@ -287,6 +287,9 @@
     if (idx === -1) return;
     var s = pool[idx];
     pool.splice(idx, 1);
+    myShifts.push({ id: 'picked-' + s.id, mo: s.mo, dy: s.dy, title: s.title, unit: s.unit, type: s.type, posted: false });
+    myShifts.sort(function(a, b){ return parseInt(a.dy) - parseInt(b.dy); });
+    renderMyShifts();
     renderPool();
     toast('You picked up the ' + s.dy + ' ' + tagLabel(s.type).toLowerCase() + ' shift. Added to your schedule.');
   }
